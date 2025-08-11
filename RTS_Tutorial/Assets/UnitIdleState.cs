@@ -8,6 +8,7 @@ public class UnitIdleState : StateMachineBehaviour
   override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
   {
     attackController = animator.transform.GetComponent<AttackController>();
+    attackController.SetIdleMaterial();
   }
 
   override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
