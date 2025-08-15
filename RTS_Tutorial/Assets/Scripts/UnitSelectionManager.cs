@@ -68,7 +68,7 @@ public class UnitSelectionManager : MonoBehaviour
       }
     }
     // Attack Target
-    if ( unitsSelected.Count > 0 && AtleastOneOffensiveUnit(unitsSelected))
+    if (unitsSelected.Count > 0 && AtleastOneOffensiveUnit(unitsSelected))
     {
       RaycastHit hit;
       Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -111,7 +111,7 @@ public class UnitSelectionManager : MonoBehaviour
         return true;
       }
     }
-      return false;
+    return false;
   }
 
   private void MultiSelect(GameObject unit)
@@ -163,6 +163,17 @@ public class UnitSelectionManager : MonoBehaviour
   }
 
 
+
+
+  public void DragSelect(GameObject unit)
+  {
+    if (unitsSelected.Contains(unit) == false)
+    {
+      unitsSelected.Add(unit);
+      SelectUnit(unit, true);
+    }
+  }
+
   private void InitSingleton()
   {
     if (Instance != null && Instance != this)
@@ -172,15 +183,6 @@ public class UnitSelectionManager : MonoBehaviour
     else
     {
       Instance = this;
-    }
-  }
-
-  public void DragSelect(GameObject unit)
-  {
-    if (unitsSelected.Contains(unit) == false)
-    {
-      unitsSelected.Add(unit);
-      SelectUnit(unit, true);
     }
   }
 }
